@@ -8,6 +8,6 @@ const router = express.Router();
 router.get('/', getPosts);
 router.post('/', createPost);
 router.patch('/:id', updatePost); // patch is used for updating existing documents.
-router.delete('/:id', deletePost); 
+router.delete('/:id', deletePost); // to delete specific post by id
 
 export default router;

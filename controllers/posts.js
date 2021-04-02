@@ -60,7 +60,9 @@ export const deletePost = async (req, res) => {
         return res.status(404).send('No post with that id');
     }
 
-    await PostMessage.findByIdAndRemove(id);
+    await PostMessage.findByIdAndRemove(id); 
+    // since we are only deleting so we dont need any variables
+    // using const. we just apply the logic 
 
     res.json({ message: "Post deleted succesfully "});
 }
