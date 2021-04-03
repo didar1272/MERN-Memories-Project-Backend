@@ -41,7 +41,7 @@ export const updatePost = async (req, res) => {
     // then as 2nd para we need to pass the whole updated 'post'. but where are we recieving
     // the data for the updates ?? Ans: we are recieving it from the requested body (req.body) shown above.
 
-    const updatedPost = await PostMessage.findByIdAndUpdate(_id, post, { new: true });
+    const updatedPost = await PostMessage.findByIdAndUpdate(_id, { ...post, _id }, { new: true });
     // This is a asynchronous action so we add 'await' infront of it.
     // 'updatedPost' gives us access to the updated post and the part in the right side of 
     // updatedPost updates the post in the in database.
