@@ -73,12 +73,12 @@ export const likePost = async (req, res) => {
     if(!req.userId) return res.json({ message: 'Unauthenticated'});
 
     if(!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).send('No post with that id');
+        return res.status(404).send(`No post with that : ${id}`);
     }
 
     const post = await PostMessage.findById(id);
 
-    const index = post.likes.findIndex((Id) => id === String(req.userId));
+    const index = post.likes.findIndex((id) => id === String(req.userId));
 
     if(index === -1) {  // like the post
         post.likes.push(req.userId);
@@ -88,5 +88,5 @@ export const likePost = async (req, res) => {
     }
     const updatedPost = await PostMessage.findByIdAndUpdate(id, post, { new: true });
 
-    res.json(updatedPost);
+    res.status(200).json(updatedPost);
 }
